@@ -8,14 +8,6 @@ The [RazerSDK](https://github.com/razerofficial/razer-sdk-docs) can be accessed 
 
 * [UnrealEngine Forums](https://forums.unrealengine.com/forum.php)
 
-## Quick Start
-
-* First you need an [Unreal](http://unrealengine.com) account
-
-* Link your Github account with your Unreal account per the [wiki instructions](https://wiki.unrealengine.com/GitHub_Setup#GitHub_Account)
-
-* Only after linking your Github account will you have access to the [UE4 Source](https://github.com/EpicGames/UnrealEngine).
-
 ## Resources
 
 * Get the [Unreal Engine](https://www.unrealengine.com/what-is-unreal-engine-4) - Unreal Engine and Source, All for 5% of Revenue after more than $3k gross revenue
@@ -72,3 +64,92 @@ The [RazerSDK](https://github.com/razerofficial/razer-sdk-docs) can be accessed 
 
 * [BLUI](https://forums.unrealengine.com/showthread.php?58192-PLUGIN-BLUI-Open-Source-HTML5-JS-CSS-HUD-UI-Release-1-0!) - BLUI is an open-source HTML renderer to make fancy UIs by embedding a browser into UE4   
 
+## Quick Start
+
+* First you need an [Unreal](http://unrealengine.com) account
+
+* Link your Github account with your Unreal account per the [wiki instructions](https://wiki.unrealengine.com/GitHub_Setup#GitHub_Account)
+
+* Only after linking your Github account will you have access to the [UE4 Source](https://github.com/EpicGames/UnrealEngine).
+
+* Clone the [UE4 Source](https://github.com/EpicGames/UnrealEngine) branch `4.11` or better.
+
+* Run the `Setup.bat` batch file to install the dependencies for `UnrealEngine`.
+
+* Run the `GenerateProjectFiles.bat` batch file to generate the `Visual Studio` project files for `UnrealEngine`.
+
+* Open the `UE4.sln` solution in `Visual Studio 2015`.
+
+* In `Visual Studio 2015` choose the `Solution Configuration` with `Development` on `Solution Platform` with `Win64`.
+
+* The menu item `Debug->Start Without Debugging` will launch the `Unreal Editor`.
+
+* The `UnrealEngine` built from source will be registered and then exit the `Unreal Editor/Launcher`.
+
+* Switch to an example project within this repository.
+
+* Right-Click the example `.upropject` file and choose `Switch Unreal Engine Version...` with `Source build` of Unreal 4.11 or better.
+
+* Right-Click the example `.upropject` file and choose `Genererate Visual Studio project files`.
+
+* Open `.sln` file with `Visual Studio 2015`.
+
+* In `Visual Studio 2015` choose the `Solution Configuration` with `DebugGame Editor` on `Solution Platform` with `Win64`.
+
+* The menu item `Debug->Start Without Debugging` will launch the `Unreal Editor`.
+
+* In Unreal Editor, select the `File->Package Project->Android->Android (DTX)` menu item.
+
+* After the successful build, run the example install batch file in the output folder `Android_DXT\Install_Example_Development-armv7-es2.bat` which installs the APK on the connected `ADB` device.
+
+## Examples
+
+### RazerSDKExample
+
+The `RazerSDKExample` sample is an `Unreal C++/Blueprint project`. This project has the minimal `RazerSDK` initialization and shutdown code required for games which can be found in the level blueprint.
+
+![image_1](image-md/image_1.png)
+
+* Open the level in `Levels\ExampleLevel`.
+
+* Open the level blueprint.
+
+The `BeginPlay` event invokes the `Initize Razer SDK` and `Setup UI` custom events.
+
+The `InitizeRazerSDK` custom event invokes the `RazerSDK/InitPlugin` function.
+
+The `InitPlugin` function delegates are hooked up to display the results in a `TextBlock` using the `UpdateTextStatus` and `UpdateTextErrorStatus` custom events.  
+
+The `SetupUI` custom event invokes the `Create UIWidget` and `Setup Button Events` custom events.
+
+The `CreateUIWidget` custom event invokes the `Create Example Widget BP Widget` and `Add to Viewport` functions. 
+
+The `SetupButtonEvents` custom event invokes the `Bind Event to OnPressed` which binds the `Shutdown Button` to the `ShutdownRazerSDK` custom event.
+
+The `ShutdownRazerSDK` custom event invokes `RazerSDK/Shutdown` function.
+
+The `OnSuccessShutdown` delegate invokes the `RazerSDK/Quit` function.
+
+### InAppPurchases
+
+The `InAppPurchases` sample is an `Unreal C++/Blueprint project`.
+
+![image_2](image-md/image_2.png) 
+
+* Open the level in `Levels\ExampleLevel`.
+
+* Open the level blueprint.
+
+## Razer SDK
+
+### InitPlugin
+
+### RequestGamerInfo
+
+### RequestProducts
+
+### RequestPurchase
+
+### RequestReceipts
+
+### Shutdown
