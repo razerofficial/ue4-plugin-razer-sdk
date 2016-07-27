@@ -168,14 +168,42 @@ The `UpdateReceiptsUIOnRenderingThread` custom event dynamically creates `TextBl
 
 ## Razer SDK
 
+The `RazerSDK` can be accessed using the `RazerSDK UE4 Plugin` which provides a `Blueprint Library`.
+
+### OnFailure
+
+All `OnFailure` delegates return an `int errorCode` and `FString errorMessage` when used by `RazerSDK` function calls.
+
+### OnCancel
+
+All `OnCancel` delegates have no parameters when used by `RazerSDK` function calls.
+
 ### InitPlugin
+
+See the [RazerSDK Documentation](https://github.com/razerofficial/razer-sdk-docs) for details on how to obtain the `Secret API Key`.
+
+The `RazerSDK/InitPlugin` function takes a `FString` parameter for `SecretApiKey`. This `FString` can be copied and pasted directly from the game's `Secret API Key`. The `OnSuccess` delegate is invoked if the `RazerSDK` is initialized successfully. The `OnFailure` delegate is invoked if the `RazerSDK` fails to initialize.
 
 ### RequestGamerInfo
 
+`RequestGamerInfo` returns the `GamerInfo` for the logged in user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestGamerInfo` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives a `FRazerSDK_GamerInfo` structure. The `FRazerSDK_GamerInfo` structure provides the `Username` and `Uuid` fields.
+
 ### RequestProducts
+
+`RequestProducts` returns the product information given an array of `identifiers`. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestProducts` function takes an array of `FString` objects for the `products` parameter. The `FString` array can contain `identifiers` that are `ENTITLEMENTS` and `CONSUMABLES`. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives an array of `FRazerSDK_Product` structures. The `FRazerSDK_Product` structure provides the `Identifier`, `Name`, `Description`, `Local Price`, `Product Type` and several other fields.
 
 ### RequestPurchase
 
+`RequestPurchase` initiates a purchase for the logged in user given the `identifier` and `product type`. The `product type` can be `ENTITLEMENT` or `CONSUMABLE`. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestPurchase` function takes a `FString` for the `identifier` and `product type` parameters. Entitlements and consumables need to correspond to the items that were created in the [developer portal](https://devs.ouya.tv). The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives a `FRazerSDK_PurchaseResult` structures. The `FRazerSDK_PurchaseResult` structure provides the `Identifier` that was just purchased by the logged in user.
+
 ### RequestReceipts
 
+`RequestReceipts` returns all the `ENTITLEMENT` receipts for the logged in user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestReceipts` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives an array of `FRazerSDK_Receipt` structures. The `FRazerSDK_Receipt` structure provides the `Identifier`, `LocalPrice`, and several other fields.
+
 ### Shutdown
+
+This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/Shutdown` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled.
+
+### Quit
+
+This method should only be invoked after the `RazerSDK` has been shutdown if the `RazerSDK` had successfully initialized. The `RazerSDK/Quit` function will immediately exit the `UE4 Application`.
