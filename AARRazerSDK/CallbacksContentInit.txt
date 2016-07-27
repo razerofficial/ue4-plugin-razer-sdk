@@ -1,0 +1,17 @@
+Compiled from "CallbacksContentInit.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksContentInit {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksContentInit();
+    Signature: ()V
+
+  public native void CallbacksContentInitOnInitialized();
+    Signature: ()V
+
+  public native void CallbacksContentInitOnDestroyed();
+    Signature: ()V
+
+  public void onInitialized();
+    Signature: ()V
+
+  public void onDestroyed();
+    Signature: ()V
+}

@@ -1,0 +1,23 @@
+Compiled from "CallbacksRequestGamerInfo.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksRequestGamerInfo {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksRequestGamerInfo();
+    Signature: ()V
+
+  public native void CallbacksRequestGamerInfoOnSuccess(java.lang.String);
+    Signature: (Ljava/lang/String;)V
+
+  public native void CallbacksRequestGamerInfoOnFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public native void CallbacksRequestGamerInfoOnCancel();
+    Signature: ()V
+
+  public void onSuccess(java.lang.String);
+    Signature: (Ljava/lang/String;)V
+
+  public void onFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public void onCancel();
+    Signature: ()V
+}

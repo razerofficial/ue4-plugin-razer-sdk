@@ -1,0 +1,35 @@
+Compiled from "HookOnGameActivityListener.java"
+public class com.razerzone.store.sdk.engine.unreal.HookOnGameActivityListener implements com.razerzone.store.sdk.engine.unreal.OnGameActivityListener {
+  public com.razerzone.store.sdk.engine.unreal.HookOnGameActivityListener();
+    Signature: ()V
+
+  public boolean dispatchGenericMotionEvent(android.view.MotionEvent);
+    Signature: (Landroid/view/MotionEvent;)Z
+
+  public boolean dispatchKeyEvent(android.view.KeyEvent);
+    Signature: (Landroid/view/KeyEvent;)Z
+
+  public boolean onActivityResult(int, int, android.content.Intent);
+    Signature: (IILandroid/content/Intent;)Z
+
+  public void onCreate(android.os.Bundle);
+    Signature: (Landroid/os/Bundle;)V
+
+  public void onDestroy();
+    Signature: ()V
+
+  public void onPause();
+    Signature: ()V
+
+  public void onResume();
+    Signature: ()V
+
+  public void onStart();
+    Signature: ()V
+
+  public void onStop();
+    Signature: ()V
+
+  static {};
+    Signature: ()V
+}

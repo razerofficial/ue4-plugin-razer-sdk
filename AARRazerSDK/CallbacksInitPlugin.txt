@@ -1,0 +1,17 @@
+Compiled from "CallbacksInitPlugin.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksInitPlugin {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksInitPlugin();
+    Signature: ()V
+
+  public native void CallbacksInitPluginOnSuccess();
+    Signature: ()V
+
+  public native void CallbacksInitPluginOnFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public void onSuccess();
+    Signature: ()V
+
+  public void onFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+}

@@ -1,0 +1,17 @@
+Compiled from "CallbacksShutdown.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksShutdown {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksShutdown();
+    Signature: ()V
+
+  public native void CallbacksShutdownOnSuccess();
+    Signature: ()V
+
+  public native void CallbacksShutdownOnFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public void onSuccess();
+    Signature: ()V
+
+  public void onFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+}

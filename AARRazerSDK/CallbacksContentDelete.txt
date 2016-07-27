@@ -1,0 +1,17 @@
+Compiled from "CallbacksContentDelete.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksContentDelete {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksContentDelete();
+    Signature: ()V
+
+  public native void CallbacksContentDeleteOnDeleteFailed(com.razerzone.store.sdk.content.GameMod, int, java.lang.String);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;)V
+
+  public native void CallbacksContentDeleteOnDeleted(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+
+  public void onDeleteFailed(com.razerzone.store.sdk.content.GameMod, int, java.lang.String);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;)V
+
+  public void onDeleted(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+}

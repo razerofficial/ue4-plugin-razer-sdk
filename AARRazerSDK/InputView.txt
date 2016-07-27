@@ -1,0 +1,38 @@
+Compiled from "InputView.java"
+public class com.razerzone.store.sdk.engine.unreal.InputView extends android.view.View {
+  public com.razerzone.store.sdk.engine.unreal.InputView(android.content.Context, android.util.AttributeSet);
+    Signature: (Landroid/content/Context;Landroid/util/AttributeSet;)V
+
+  public com.razerzone.store.sdk.engine.unreal.InputView(android.content.Context, android.util.AttributeSet, int);
+    Signature: (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+
+  public com.razerzone.store.sdk.engine.unreal.InputView(android.content.Context);
+    Signature: (Landroid/content/Context;)V
+
+  public void shutdown();
+    Signature: ()V
+
+  public static com.razerzone.store.sdk.engine.unreal.InputView getInstance();
+    Signature: ()Lcom/razerzone/store/sdk/engine/unreal/InputView;
+
+  public boolean javaDispatchKeyEvent(long, long, int, int, int, int, int, int, int, int);
+    Signature: (JJIIIIIIII)Z
+
+  public boolean javaDispatchGenericMotionEvent(long, long, int, int, int, int, float, float, int, int, int, int, int[], int[], float[], float[], float[], float[], float[], float[], float[], float[], float[], int, int[], float[]);
+    Signature: (JJIIIIFFIIII[I[I[F[F[F[F[F[F[F[F[FI[I[F)Z
+
+  public boolean remappedDispatchGenericMotionEvent(android.view.MotionEvent);
+    Signature: (Landroid/view/MotionEvent;)Z
+
+  public boolean remappedDispatchKeyEvent(android.view.KeyEvent);
+    Signature: (Landroid/view/KeyEvent;)Z
+
+  public native void dispatchGenericMotionEventNative(int, int, float);
+    Signature: (IIF)V
+
+  public native void dispatchKeyEventNative(int, int, int);
+    Signature: (III)V
+
+  static {};
+    Signature: ()V
+}

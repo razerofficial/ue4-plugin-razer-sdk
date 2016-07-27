@@ -1,0 +1,17 @@
+Compiled from "CallbacksContentSearchInstalled.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksContentSearchInstalled {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksContentSearchInstalled();
+    Signature: ()V
+
+  public native void CallbacksContentSearchInstalledOnError(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public native void CallbacksContentSearchInstalledOnResults(com.razerzone.store.sdk.content.GameMod[], int);
+    Signature: ([Lcom/razerzone/store/sdk/content/GameMod;I)V
+
+  public void onError(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public void onResults(com.razerzone.store.sdk.content.GameMod[], int);
+    Signature: ([Lcom/razerzone/store/sdk/content/GameMod;I)V
+}

@@ -1,0 +1,23 @@
+Compiled from "CallbacksRequestProducts.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksRequestProducts {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksRequestProducts();
+    Signature: ()V
+
+  public native void CallbacksRequestProductsOnSuccess(java.lang.String);
+    Signature: (Ljava/lang/String;)V
+
+  public native void CallbacksRequestProductsOnFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public native void CallbacksRequestProductsOnCancel();
+    Signature: ()V
+
+  public void onSuccess(java.lang.String);
+    Signature: (Ljava/lang/String;)V
+
+  public void onFailure(int, java.lang.String);
+    Signature: (ILjava/lang/String;)V
+
+  public void onCancel();
+    Signature: ()V
+}

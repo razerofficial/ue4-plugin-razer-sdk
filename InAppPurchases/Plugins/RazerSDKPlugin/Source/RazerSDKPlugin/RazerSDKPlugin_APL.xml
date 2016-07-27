@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--GearVR plugin additions-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- init section is always evaluated once per architecture -->
+	<init>
+		<log text="RazerSDKPlugin init"/>
+	</init>
+
+	<!-- optional files or directories to copy to Intermediate/Android/APK -->
+	<resourceCopies>
+		<copyFile src="$S(PluginDir)/../../Build/Android/libs/pluginrazersdk-release.aar" dst="$S(BuildDir)/libs/pluginrazersdk-release.aar" />
+		<copyFile src="$S(PluginDir)/../../Build/Android/libs/pluginrazersdk-release.jar" dst="$S(BuildDir)/libs/pluginrazersdk-release.jar" />
+		<copyFile src="$S(PluginDir)/../../Build/Android/libs/store-sdk-standard-release.aar" dst="$S(BuildDir)/libs/store-sdk-standard-release.aar" />
+		<copyFile src="$S(PluginDir)/../../Build/Android/libs/store-sdk-standard-release.jar" dst="$S(BuildDir)/libs/store-sdk-standard-release.jar" />
+	</resourceCopies>
+
+	<!-- optional additions to proguard -->
+	<proguardAdditions>
+		<insert>
+			-keep class com.razerzone.** {
+			*;
+			}
+			-keep class android.app.** {
+			*;
+			}
+		</insert>
+	</proguardAdditions>
+
+	<!-- optional additions to the GameActivity imports in GameActivity.java -->
+	<gameActivityImportAdditions>
+		<insert>
+import android.view.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import com.razerzone.store.sdk.engine.unreal.HookOnGameActivityListener;
+import com.razerzone.store.sdk.engine.unreal.Plugin;
+		</insert>
+	</gameActivityImportAdditions>
+
+	<!-- optional additions to the GameActivity class in GameActivity.java -->
+	<gameActivityClassAdditions>
+		<insert>
+	// Intercept Game Activity events
+	private static HookOnGameActivityListener sHookOnGameActivityListener = new HookOnGameActivityListener();
+
+	@Override
+	public boolean dispatchGenericMotionEvent(MotionEvent motionEvent) {
+		return sHookOnGameActivityListener.dispatchGenericMotionEvent(motionEvent);
+	}
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent keyEvent) {
+		return sHookOnGameActivityListener.dispatchKeyEvent(keyEvent);
+	}	
+		</insert>
+	</gameActivityClassAdditions>
+
+	<!-- optional additions to GameActivity onCreate in GameActivity.java -->
+	<gameActivityOnCreateAdditions>
+		<insert>
+		Plugin.setActivity(this);
+		sHookOnGameActivityListener.onCreate(savedInstanceState);
+		</insert>
+	</gameActivityOnCreateAdditions>
+
+	<!-- optional additions to GameActivity onDestroy in GameActivity.java -->
+	<gameActivityOnDestroyAdditions>
+		<insert>
+		sHookOnGameActivityListener.onDestroy();		
+		</insert>
+	</gameActivityOnDestroyAdditions>
+
+	<!-- optional additions to GameActivity onStart in GameActivity.java -->
+	<gameActivityOnStartAdditions>
+		<insert>
+		sHookOnGameActivityListener.onStart();
+		</insert>
+	</gameActivityOnStartAdditions>
+
+	<!-- optional additions to GameActivity onStop in GameActivity.java -->
+	<gameActivityOnStopAdditions>
+		<insert>
+		sHookOnGameActivityListener.onStop();
+		</insert>
+	</gameActivityOnStopAdditions>
+
+	<!-- optional additions to GameActivity onPause in GameActivity.java -->
+	<gameActivityOnPauseAdditions>
+		<insert>
+		sHookOnGameActivityListener.onPause();
+		</insert>
+	</gameActivityOnPauseAdditions>
+
+	<!-- optional additions to GameActivity onResume in GameActivity.java -->
+	<gameActivityOnResumeAdditions>
+		<insert>
+		sHookOnGameActivityListener.onResume();
+		</insert>
+	</gameActivityOnResumeAdditions>
+
+	<!-- optional additions to GameActivity onActivityResult in GameActivity.java -->
+	<gameActivityOnActivityResultAdditions>
+		<insert>
+		if (sHookOnGameActivityListener.onActivityResult(requestCode, resultCode, data)) {
+			// no further processing needed
+			return;
+		}
+		</insert>
+	</gameActivityOnActivityResultAdditions>
+
+	<!-- optional updates applied to AndroidManifest.xml -->
+	<androidManifestUpdates>
+		<!-- update the GameActivity application -->
+		<loopElements tag="application">
+			<addAttribute tag="application" name="android:logo" value="@drawable/leanback_icon"/>
+			<addAttribute tag="application" name="android:isGame" value="true"/>
+		</loopElements>
+		<!-- update the GameActivity activity -->
+		<loopElements tag="activity">
+			<setStringFromAttribute result="activityName" tag="$" name="android:name"/>
+			<setBoolIsEqual result="bGameActivity" arg1="$S(activityName)" arg2="com.epicgames.ue4.SplashActivity"/>
+			<if condition="bGameActivity">
+				<true>
+					<!-- add to intent-filter -->
+					<setElement result="intentInfo" value="category"/>
+					<addAttribute tag="$intentInfo" name="android:name" value="android.intent.category.LEANBACK_LAUNCHER"/>
+					<addElement tag="intent-filter" name="intentInfo"/>
+					<!-- add to intent-filter -->
+					<setElement result="intentInfo" value="category"/>
+					<addAttribute tag="$intentInfo" name="android:name" value="com.razerzone.store.category.GAME"/>
+					<addElement tag="intent-filter" name="intentInfo"/>
+				</true>
+			</if>
+		</loopElements>
+	</androidManifestUpdates>
+
+</root>

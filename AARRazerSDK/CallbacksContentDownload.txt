@@ -1,0 +1,23 @@
+Compiled from "CallbacksContentDownload.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksContentDownload {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksContentDownload();
+    Signature: ()V
+
+  public native void CallbacksContentDownloadOnProgress(com.razerzone.store.sdk.content.GameMod, int);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;I)V
+
+  public native void CallbacksContentDownloadOnFailed(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+
+  public native void CallbacksContentDownloadOnComplete(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+
+  public void onProgress(com.razerzone.store.sdk.content.GameMod, int);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;I)V
+
+  public void onFailed(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+
+  public void onComplete(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+}

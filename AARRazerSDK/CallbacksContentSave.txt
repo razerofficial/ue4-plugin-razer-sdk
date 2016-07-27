@@ -1,0 +1,17 @@
+Compiled from "CallbacksContentSave.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksContentSave {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksContentSave();
+    Signature: ()V
+
+  public native void CallbacksContentSaveOnError(com.razerzone.store.sdk.content.GameMod, int, java.lang.String);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;)V
+
+  public native void CallbacksContentSaveOnSuccess(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+
+  public void onError(com.razerzone.store.sdk.content.GameMod, int, java.lang.String);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;)V
+
+  public void onSuccess(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+}

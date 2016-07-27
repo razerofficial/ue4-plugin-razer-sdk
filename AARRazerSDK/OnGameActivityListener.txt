@@ -1,0 +1,29 @@
+Compiled from "OnGameActivityListener.java"
+public interface com.razerzone.store.sdk.engine.unreal.OnGameActivityListener {
+  public abstract boolean dispatchGenericMotionEvent(android.view.MotionEvent);
+    Signature: (Landroid/view/MotionEvent;)Z
+
+  public abstract boolean dispatchKeyEvent(android.view.KeyEvent);
+    Signature: (Landroid/view/KeyEvent;)Z
+
+  public abstract boolean onActivityResult(int, int, android.content.Intent);
+    Signature: (IILandroid/content/Intent;)Z
+
+  public abstract void onCreate(android.os.Bundle);
+    Signature: (Landroid/os/Bundle;)V
+
+  public abstract void onDestroy();
+    Signature: ()V
+
+  public abstract void onPause();
+    Signature: ()V
+
+  public abstract void onResume();
+    Signature: ()V
+
+  public abstract void onStart();
+    Signature: ()V
+
+  public abstract void onStop();
+    Signature: ()V
+}

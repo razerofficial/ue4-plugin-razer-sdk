@@ -1,0 +1,17 @@
+Compiled from "CallbacksContentUnpublish.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksContentUnpublish {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksContentUnpublish();
+    Signature: ()V
+
+  public native void CallbacksContentUnpublishOnError(com.razerzone.store.sdk.content.GameMod, int, java.lang.String);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;)V
+
+  public native void CallbacksContentUnpublishOnSuccess(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+
+  public void onError(com.razerzone.store.sdk.content.GameMod, int, java.lang.String);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;)V
+
+  public void onSuccess(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+}

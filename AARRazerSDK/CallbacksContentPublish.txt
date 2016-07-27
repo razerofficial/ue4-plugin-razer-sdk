@@ -1,0 +1,17 @@
+Compiled from "CallbacksContentPublish.java"
+public class com.razerzone.store.sdk.engine.unreal.CallbacksContentPublish {
+  public com.razerzone.store.sdk.engine.unreal.CallbacksContentPublish();
+    Signature: ()V
+
+  public native void CallbacksContentPublishOnError(com.razerzone.store.sdk.content.GameMod, int, java.lang.String, android.os.Bundle);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;Landroid/os/Bundle;)V
+
+  public native void CallbacksContentPublishOnSuccess(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+
+  public void onError(com.razerzone.store.sdk.content.GameMod, int, java.lang.String, android.os.Bundle);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;ILjava/lang/String;Landroid/os/Bundle;)V
+
+  public void onSuccess(com.razerzone.store.sdk.content.GameMod);
+    Signature: (Lcom/razerzone/store/sdk/content/GameMod;)V
+}

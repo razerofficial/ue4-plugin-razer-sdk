@@ -1,0 +1,29 @@
+{
+	"FileVersion": 1,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "RazerSDK Plugin",
+	"Description": "Razer Store Integration.",
+	"Category": "Audio",
+	"CreatedBy": "Razer Inc",
+	"CreatedByURL": "http://razerzone.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"Modules": [
+		{
+			"Name": "RazerSDKPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"WhitelistPlatforms" :
+			[
+                "Android",
+                "Win64"
+			]
+		}
+	],
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false
+}

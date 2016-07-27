@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{147823AE-4A48-148A-28A9-8885FDF888E1}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "RazerSDKExample",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
