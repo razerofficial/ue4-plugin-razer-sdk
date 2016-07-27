@@ -106,9 +106,11 @@ The [RazerSDK](https://github.com/razerofficial/razer-sdk-docs) can be accessed 
 
 ### RazerSDKExample
 
-The `RazerSDKExample` sample is an `Unreal C++/Blueprint project`. This project has the minimal `RazerSDK` initialization and shutdown code required for games which can be found in the level blueprint.
+The [RazerSDKExample](https://github.com/razerofficial/ue4-plugin-razer-sdk/tree/master/RazerSDKExample) sample is an `Unreal C++/Blueprint project`. This project has the minimal `RazerSDK` initialization and shutdown code required for games which can be found in the level blueprint.
 
 ![image_1](image-md/image_1.png)
+
+* The `Blueprints\ExampleWidget_BP` defines the example UI layout.
 
 * Open the level in `Levels\ExampleLevel`.
 
@@ -122,7 +124,7 @@ The `InitPlugin` function delegates are hooked up to display the results in a `T
 
 The `SetupUI` custom event invokes the `Create UIWidget` and `Setup Button Events` custom events.
 
-The `CreateUIWidget` custom event invokes the `Create Example Widget BP Widget` and `Add to Viewport` functions. 
+The `CreateUIWidget` custom event invokes the `Create Example Widget BP Widget` and `Add to Viewport` functions.
 
 The `SetupButtonEvents` custom event invokes the `Bind Event to OnPressed` which binds the `Shutdown Button` to the `ShutdownRazerSDK` custom event.
 
@@ -132,13 +134,37 @@ The `OnSuccessShutdown` delegate invokes the `RazerSDK/Quit` function.
 
 ### InAppPurchases
 
-The `InAppPurchases` sample is an `Unreal C++/Blueprint project`.
+The [InAppPurchases](https://github.com/razerofficial/ue4-plugin-razer-sdk/tree/master/InAppPurchases) sample is an `Unreal C++/Blueprint project`. The sample expands on the `RazerSDKExample` and uses `IAP` functions.
 
 ![image_2](image-md/image_2.png) 
+
+* The `Blueprints\ProductWidget_BP` defines the layout for the product items which is a `Button` with a child `TextBlock`.
+
+* The `Blueprints\ReceiptWidget_BP` defines the layout for receipt items which is a `TextBlock`.
+
+* The `Blueprints\ExampleWidget_BP` defines the example UI layout.
 
 * Open the level in `Levels\ExampleLevel`.
 
 * Open the level blueprint.
+
+The `Request Products`, `Request Receipts`, and `Request GamerInfo` buttons can use the same binding mechanism as the `Shutdown` button.
+
+The `Purchase` buttons need special handling to check for the pressed state using the `Event Tick` event. This is a workaround because the `OnPressed` delegate doesn't provide the `Button` sender as a parameter. The `OnPressed` binding indicates that a `Button` was pressed, but doesn't indicate which `Button` was pressed. 
+
+The `Event Tick` event invokes the `Update Products UI On Render Thread`, `Update Receipts UI On Render Thread`, and `Tick Check Product Buttons` so that UI manipulation happens on the `MainThread`. The `RazerSDK` callbacks occur outside the `MainThread` and the `Event Tick` event needs to handle changes to the UI.
+
+The `OnSuccessRequestProducts` delegate sets the `Var_Products` variable so that the `MainThread` can update the UI.
+
+The `OnSuccessRequestReceipts` delegate sets the `Var_Receipts` variable so that the `MainThread` can update the UI.
+
+The `OnSuccessGamerInfo` delegate is able to set the `GamerInfo TextBlock` outside the `MainThread` without throwing an assetion.
+
+The `OnSuccessShutdown` delegate is able to set the `Status TextBlock` outside the `MainThread` without throwing an assetion.
+
+The `UpdateProductsUIOnRenderingThread` custom event dynamically creates `Buttons` that can be `pressed` to call the `RazerSDK/RequestPurchase` function.
+
+The `UpdateReceiptsUIOnRenderingThread` custom event dynamically creates `TextBlocks` to display the receipts. 
 
 ## Razer SDK
 
