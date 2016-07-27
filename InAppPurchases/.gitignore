@@ -23,3 +23,7 @@ Build/Android/src/com/razerzone/store/sdk/engine/unreal/examples/inapppurchases/
 Build/Android/src/com/razerzone/store/sdk/engine/unreal/examples/inapppurchases/OBBData.java
 Build/Android/src/com/razerzone/store/sdk/engine/unreal/examples/inapppurchases/OBBDownloaderService.java
 Build/Android/src/com/epicgames/ue4/DownloadShim.java
+!Plugins/RazerSDKPlugin/Build/Android/libs/pluginrazersdk-release.aar
+!Plugins/RazerSDKPlugin/Build/Android/libs/pluginrazersdk-release.jar
+!Plugins/RazerSDKPlugin/Build/Android/libs/store-sdk-standard-release.aar
+!Plugins/RazerSDKPlugin/Build/Android/libs/store-sdk-standard-release.jar
