@@ -102,6 +102,22 @@ The [RazerSDK](https://github.com/razerofficial/razer-sdk-docs) can be accessed 
 
 * After the successful build, run the example install batch file in the output folder `Android_DXT\Install_Example_Development-armv7-es2.bat` which installs the APK on the connected `ADB` device.
 
+## Import Plugin
+
+* Copy the `RazerSDKPlugin` to your project's `Plugins\RazerSDKPlugin` folder.
+
+* Click the menu item `Edit->Plugins`.
+
+* Collapse the `Built-In` Plugins.
+
+* Select the `Project` Plugins.
+
+* Make sure the `RazerSDK Plugin` has `Enabled` checked.
+
+![image_11](image-md/image_11.png)
+
+** Note: If you build for `Android` before setting the package name then the `Intermediate\Android\APK\src\com\YourCompany` folder will need to be removed manually before rebuilding. **
+
 ## Examples
 
 ### RazerSDKExample
