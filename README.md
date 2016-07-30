@@ -118,6 +118,12 @@ The [RazerSDK](https://github.com/razerofficial/razer-sdk-docs) can be accessed 
 
 ** Note: If you build for `Android` before setting the package name then the `Intermediate\Android\APK\src\com\YourCompany` folder will need to be removed manually before rebuilding. **
 
+## Leanback Icon
+
+* In order to support the `leanback` icon and the `android:isGame` attribute on the `application` element, API `21` or higher should be assigned in the `Android SDK/NDK` project settings.
+
+![image_12](image-md/image_12.png)
+
 ## Examples
 
 ### RazerSDKExample
