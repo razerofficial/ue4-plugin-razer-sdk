@@ -238,7 +238,7 @@ The `RazerSDK/InitPlugin` function takes a `FString` parameter for `SecretApiKey
 
 ### Shutdown
 
-This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/Shutdown` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled.
+This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/Shutdown` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed.
 
 ** Image below **
 
