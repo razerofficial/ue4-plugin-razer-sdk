@@ -20,26 +20,26 @@ package com.razerzone.store.sdk.engine.unreal;
 import android.util.Log;
 
 
-public class CallbacksRequestGamerInfo {
+public class CallbacksRequestLogin {
 
-	private final String TAG  = CallbacksRequestGamerInfo.class.getSimpleName();
+	private final String TAG  = CallbacksRequestLogin.class.getSimpleName();
 
-	public native void CallbacksRequestGamerInfoOnSuccess(String jsonData);
-	public native void CallbacksRequestGamerInfoOnFailure(int errorCode, String errorMessage);
-	public native void CallbacksRequestGamerInfoOnCancel();
+	public native void CallbacksRequestLoginOnSuccess();
+	public native void CallbacksRequestLoginOnFailure(int errorCode, String errorMessage);
+	public native void CallbacksRequestLoginOnCancel();
 
-	public void onSuccess(final String jsonData) {
-		Log.i(TAG, "onSuccess=" + jsonData);
-		CallbacksRequestGamerInfoOnSuccess(jsonData);
+	public void onSuccess() {
+		Log.i(TAG, "onSuccess:");
+		CallbacksRequestLoginOnSuccess();
 	}
 
 	public void onFailure(final int errorCode, final String errorMessage) {
 		Log.i(TAG, "onFailure: errorCode=" + errorCode + " errorMessage=" + errorMessage);
-		CallbacksRequestGamerInfoOnFailure(errorCode, errorMessage);
+		CallbacksRequestLoginOnFailure(errorCode, errorMessage);
 	}
 
 	public void onCancel() {
 		Log.i(TAG, "onCancel");
-		CallbacksRequestGamerInfoOnCancel();
+		CallbacksRequestLoginOnCancel();
 	}
 }

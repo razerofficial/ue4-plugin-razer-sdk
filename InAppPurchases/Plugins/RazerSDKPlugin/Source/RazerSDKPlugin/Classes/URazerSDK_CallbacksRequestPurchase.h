@@ -29,7 +29,7 @@ class URazerSDK_CallbacksRequestPurchase
 {
 public:
 #if PLATFORM_ANDROID
-	void OnSuccess(const RazerSDK::Product& product);
+	void OnSuccess(const RazerSDK::PurchaseResult& purchaseResult);
 	void OnFailure(int errorCode, const std::string& errorMessage);
 	void OnCancel();
 #endif

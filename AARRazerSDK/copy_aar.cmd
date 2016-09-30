@@ -1,4 +1,4 @@
-SET JAVA_HOME=C:\NVPACK\jdk1.7.0_71
+SET JAVA_HOME=C:\Program Files\Java\jdk1.8.0_73
 
 SET JAR="%JAVA_HOME%\bin\jar.exe"
 

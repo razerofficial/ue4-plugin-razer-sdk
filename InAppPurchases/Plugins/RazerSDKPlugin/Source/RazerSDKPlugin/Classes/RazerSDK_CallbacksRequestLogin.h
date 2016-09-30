@@ -19,29 +19,17 @@
 // this code is Android specific
 #if PLATFORM_ANDROID
 
-#include "RazerSDK_JsonObject.h"
-
 #include <string>
 
-namespace RazerSDK
+class CallbacksRequestLogin
 {
-	class Product
-	{
-	public:
-		std::string CurrencyCode;
-		std::string Description;
-		std::string DeveloperName;
-		std::string Identifier;
-		float LocalPrice;
-		std::string Name;
-		float OriginalPrice;
-		float PercentOff;
-		int PriceInCents;
-		std::string ProductType;
+public:
 
-		void Init();
-		void ParseJSON(const org_json_JSONObject::JSONObject& jsonObject);
-	};
-}
+	virtual void OnSuccess();
+
+	virtual void OnFailure(int errorCode, const std::string& errorMessage);
+
+	virtual void OnCancel();
+};
 
 #endif

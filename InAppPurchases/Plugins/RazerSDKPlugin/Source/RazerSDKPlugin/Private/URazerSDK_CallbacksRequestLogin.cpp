@@ -14,34 +14,25 @@
 * limitations under the License.
 */
 
-#pragma once
+#include "RazerSDKPluginPrivatePCH.h"
 
-// this code is Android specific
+#include "URazerSDK_CallbacksRequestLogin.h"
+
 #if PLATFORM_ANDROID
 
-#include "RazerSDK_JsonObject.h"
-
-#include <string>
-
-namespace RazerSDK
+void URazerSDK_CallbacksRequestLogin::OnSuccess()
 {
-	class Product
-	{
-	public:
-		std::string CurrencyCode;
-		std::string Description;
-		std::string DeveloperName;
-		std::string Identifier;
-		float LocalPrice;
-		std::string Name;
-		float OriginalPrice;
-		float PercentOff;
-		int PriceInCents;
-		std::string ProductType;
+	_mOnSuccess.ExecuteIfBound();
+}
 
-		void Init();
-		void ParseJSON(const org_json_JSONObject::JSONObject& jsonObject);
-	};
+void URazerSDK_CallbacksRequestLogin::OnFailure(int errorCode, const std::string& errorMessage)
+{
+	_mOnFailure.ExecuteIfBound(errorCode, errorMessage.c_str());
+}
+
+void URazerSDK_CallbacksRequestLogin::OnCancel()
+{
+	_mOnCancel.ExecuteIfBound();
 }
 
 #endif

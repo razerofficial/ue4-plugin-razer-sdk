@@ -20,10 +20,11 @@
 
 #if PLATFORM_ANDROID
 
-void URazerSDK_CallbacksRequestPurchase::OnSuccess(const RazerSDK::Product& product)
+void URazerSDK_CallbacksRequestPurchase::OnSuccess(const RazerSDK::PurchaseResult& purchaseResult)
 {
 	FRazerSDK_PurchaseResult fPurchaseResult;
-	fPurchaseResult.Identifier = product.Identifier.c_str();
+	fPurchaseResult.Identifier = purchaseResult.Identifier.c_str();
+	fPurchaseResult.OrderId = purchaseResult.OrderId.c_str();
 	_mOnSuccess.ExecuteIfBound(fPurchaseResult);
 }
 

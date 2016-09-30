@@ -19,6 +19,7 @@
 #include "Runtime/Engine/Classes/Kismet/BlueprintFunctionLibrary.h"
 
 #include "URazerSDK_CallbacksInitPlugin.h"
+#include "URazerSDK_CallbacksRequestLogin.h"
 #include "URazerSDK_CallbacksRequestGamerInfo.h"
 #include "URazerSDK_CallbacksRequestProducts.h"
 #include "URazerSDK_CallbacksRequestPurchase.h"
@@ -37,6 +38,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = RazerSDK)
 	static void InitPlugin(FString secretAPiKey, FDelegateRazerSDKOnSuccess onSuccess, FDelegateRazerSDKOnFailure onFailure);
+
+	UFUNCTION(BlueprintCallable, Category = RazerSDK)
+	static void RequestLogin(FDelegateRazerSDKOnSuccess onSuccess, FDelegateRazerSDKOnFailure onFailure, FDelegateRazerSDKOnCancel onCancel);
 
 	UFUNCTION(BlueprintCallable, Category = RazerSDK)
 	static void RequestGamerInfo(FDelegateRazerSDKOnSuccessRequestGamerInfo onSuccess, FDelegateRazerSDKOnFailure onFailure, FDelegateRazerSDKOnCancel onCancel);
@@ -59,6 +63,7 @@ public:
 private:
 
 	static URazerSDK_CallbacksInitPlugin _sCallbacksInitPlugin;
+	static URazerSDK_CallbacksRequestLogin _sCallbacksRequestLogin;
 	static URazerSDK_CallbacksRequestGamerInfo _sCallbacksRequestGamerInfo;
 	static URazerSDK_CallbacksRequestProducts _sCallbacksRequestProducts;
 	static URazerSDK_CallbacksRequestPurchase _sCallbacksRequestPurchase;

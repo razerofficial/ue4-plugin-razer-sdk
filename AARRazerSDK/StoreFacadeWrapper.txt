@@ -12,6 +12,9 @@ public class com.razerzone.store.sdk.engine.unreal.StoreFacadeWrapper {
   public void requestProducts(java.lang.String[]);
     Signature: ([Ljava/lang/String;)V
 
+  public void requestLogin();
+    Signature: ()V
+
   public void requestGamerInfo();
     Signature: ()V
 

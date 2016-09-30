@@ -97,6 +97,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RazerSDK")
 	FString Identifier;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RazerSDK")
+	FString OrderId;
 };
 
 DECLARE_DYNAMIC_DELEGATE_OneParam(FDelegateRazerSDKOnSuccessRequestPurchase, FRazerSDK_PurchaseResult, purchaseResult);

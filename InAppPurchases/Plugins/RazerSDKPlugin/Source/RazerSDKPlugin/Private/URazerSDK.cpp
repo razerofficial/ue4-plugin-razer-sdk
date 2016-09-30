@@ -25,6 +25,7 @@ using namespace RazerSDK;
 #endif
 
 URazerSDK_CallbacksInitPlugin URazerSDK::_sCallbacksInitPlugin = URazerSDK_CallbacksInitPlugin();
+URazerSDK_CallbacksRequestLogin URazerSDK::_sCallbacksRequestLogin = URazerSDK_CallbacksRequestLogin();
 URazerSDK_CallbacksRequestGamerInfo URazerSDK::_sCallbacksRequestGamerInfo = URazerSDK_CallbacksRequestGamerInfo();
 URazerSDK_CallbacksRequestProducts URazerSDK::_sCallbacksRequestProducts = URazerSDK_CallbacksRequestProducts();
 URazerSDK_CallbacksRequestPurchase URazerSDK::_sCallbacksRequestPurchase = URazerSDK_CallbacksRequestPurchase();
@@ -45,6 +46,18 @@ void URazerSDK::InitPlugin(FString secretAPiKey, FDelegateRazerSDKOnSuccess onSu
 	Plugin::initPlugin(strSecretApiKey, &_sCallbacksInitPlugin);
 #else
 	_sCallbacksInitPlugin._mOnFailure.ExecuteIfBound(0, "Platform not supported!");
+#endif
+}
+
+void URazerSDK::RequestLogin(FDelegateRazerSDKOnSuccess onSuccess, FDelegateRazerSDKOnFailure onFailure, FDelegateRazerSDKOnCancel onCancel)
+{
+	_sCallbacksRequestLogin._mOnSuccess = onSuccess;
+	_sCallbacksRequestLogin._mOnFailure = onFailure;
+	_sCallbacksRequestLogin._mOnCancel = onCancel;
+#if PLATFORM_ANDROID
+	Plugin::requestLogin(&_sCallbacksRequestLogin);
+#else
+	_sCallbacksRequestLogin._mOnFailure.ExecuteIfBound(0, "Platform not supported!");
 #endif
 }
 

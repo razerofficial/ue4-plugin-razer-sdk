@@ -51,6 +51,7 @@ public class Plugin
 	private static List<GameMod> sOuyaContentInstalledResults = null;
 	private static List<GameMod> sOuyaContentPublishedResults = null;
 	private static CallbacksInitPlugin sCallbacksInitPlugin = new CallbacksInitPlugin();
+	private static CallbacksRequestLogin sCallbacksRequestLogin = new CallbacksRequestLogin();
 	private static CallbacksRequestGamerInfo sCallbacksRequestGamerInfo = new CallbacksRequestGamerInfo();
 	private static CallbacksRequestProducts sCallbacksRequestProducts = new CallbacksRequestProducts();
 	private static CallbacksRequestPurchase sCallbacksRequestPurchase = new CallbacksRequestPurchase();
@@ -90,6 +91,7 @@ public class Plugin
 	public static void setOuyaContentPublishedResults(List<GameMod> results) { sOuyaContentPublishedResults = results; }
 
 	public static CallbacksInitPlugin getCallbacksInitPlugin() { return sCallbacksInitPlugin; }
+	public static CallbacksRequestLogin getCallbacksRequestLogin() { return sCallbacksRequestLogin; }
 	public static CallbacksRequestGamerInfo getCallbacksRequestGamerInfo() { return sCallbacksRequestGamerInfo; }
 	public static CallbacksRequestProducts getCallbacksRequestProducts() { return sCallbacksRequestProducts; }
 	public static CallbacksRequestPurchase getCallbacksRequestPurchase() { return sCallbacksRequestPurchase; }
@@ -154,7 +156,7 @@ public class Plugin
 		{
 			Log.e(TAG, "initPlugin: exception");
 			e.printStackTrace();
-			throw e;
+			Plugin.getCallbacksInitPlugin().onFailure(0, "initPlugin: exception");
 		}
 	}
 
@@ -183,6 +185,30 @@ public class Plugin
         }
         return false;
     }
+
+	public static void requestLogin()
+	{
+		try
+		{
+			if (sEnableLogging) {
+				Log.i(TAG, "requestLogin");
+			}
+
+			StoreFacadeWrapper storeFacadeWrapper = Plugin.getStoreFacadeWrapper();
+			if (null == storeFacadeWrapper)
+			{
+				Log.e(TAG, "requestLogin: storeFacadeWrapper is null!");
+				return;
+			}
+
+			storeFacadeWrapper.requestLogin();
+		}
+		catch (Exception e)
+		{
+			Log.e(TAG, "requestLogin exception");
+			e.printStackTrace();
+		}
+	}
 
 	public static void requestGamerInfo()
 	{

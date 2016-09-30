@@ -16,32 +16,24 @@
 
 #pragma once
 
-// this code is Android specific
+#include "URazerSDK_Types.h"
+
 #if PLATFORM_ANDROID
-
-#include "RazerSDK_JsonObject.h"
-
-#include <string>
-
-namespace RazerSDK
-{
-	class Product
-	{
-	public:
-		std::string CurrencyCode;
-		std::string Description;
-		std::string DeveloperName;
-		std::string Identifier;
-		float LocalPrice;
-		std::string Name;
-		float OriginalPrice;
-		float PercentOff;
-		int PriceInCents;
-		std::string ProductType;
-
-		void Init();
-		void ParseJSON(const org_json_JSONObject::JSONObject& jsonObject);
-	};
-}
-
+#include "RazerSDK_CallbacksRequestLogin.h"
 #endif
+
+class URazerSDK_CallbacksRequestLogin
+#if PLATFORM_ANDROID
+	: public CallbacksRequestLogin
+#endif
+{
+public:
+#if PLATFORM_ANDROID
+	void OnSuccess();
+	void OnFailure(int errorCode, const std::string& errorMessage);
+	void OnCancel();
+#endif
+	FDelegateRazerSDKOnSuccess _mOnSuccess;
+	FDelegateRazerSDKOnFailure _mOnFailure;
+	FDelegateRazerSDKOnCancel _mOnCancel;
+};

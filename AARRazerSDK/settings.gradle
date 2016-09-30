@@ -1,1 +1,1 @@
-include ':app', ':pluginrazersdk'
+include ':pluginrazersdk'

@@ -217,6 +217,37 @@ namespace RazerSDK
 		//TODO: clean memory
 	}
 
+	void Plugin::requestLogin(CallbacksRequestLogin* callbacks)
+	{
+#if ENABLE_VERBOSE_LOGGING
+		__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "requestLogin");
+#endif
+
+		CallbackSingleton::GetInstance()->m_callbacksRequestLogin = callbacks;
+
+		JNIEnv* env = FAndroidApplication::GetJavaEnv();
+
+		if (!jc_Plugin)
+		{
+			__android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "jc_Plugin is not initialized");
+			return;
+		}
+
+#if ENABLE_VERBOSE_LOGGING
+		__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "get the requestLogin method");
+#endif
+		jmethodID method = env->GetStaticMethodID(jc_Plugin, "requestLogin", "()V");
+		EXCEPTION_RETURN(env);
+
+#if ENABLE_VERBOSE_LOGGING
+		__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "execute the requestLogin method");
+#endif
+		env->CallStaticVoidMethod(jc_Plugin, method);
+		EXCEPTION_RETURN(env);
+
+		//TODO: clean memory
+	}
+
 	void Plugin::requestGamerInfo(CallbacksRequestGamerInfo* callbacks)
 	{
 #if ENABLE_VERBOSE_LOGGING

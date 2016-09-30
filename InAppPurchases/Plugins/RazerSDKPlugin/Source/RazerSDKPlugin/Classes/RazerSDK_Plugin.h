@@ -36,6 +36,7 @@ class CallbacksContentSearchInstalled;
 class CallbacksContentSearchPublished;
 class CallbacksContentUnpublish;
 class CallbacksInitPlugin;
+class CallbacksRequestLogin;
 class CallbacksRequestGamerInfo;
 class CallbacksRequestProducts;
 class CallbacksRequestPurchase;
@@ -51,6 +52,8 @@ namespace RazerSDK
 		static int InitJNI();
 
 		static void initPlugin(const std::string& secretApiKey, CallbacksInitPlugin* callbacks);
+
+		static void requestLogin(CallbacksRequestLogin* callbacks);
 
 		static void requestGamerInfo(CallbacksRequestGamerInfo* callbacks);
 

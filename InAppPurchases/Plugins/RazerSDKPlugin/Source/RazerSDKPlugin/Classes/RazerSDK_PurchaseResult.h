@@ -25,19 +25,11 @@
 
 namespace RazerSDK
 {
-	class Product
+	class PurchaseResult
 	{
 	public:
-		std::string CurrencyCode;
-		std::string Description;
-		std::string DeveloperName;
 		std::string Identifier;
-		float LocalPrice;
-		std::string Name;
-		float OriginalPrice;
-		float PercentOff;
-		int PriceInCents;
-		std::string ProductType;
+		std::string OrderId;
 
 		void Init();
 		void ParseJSON(const org_json_JSONObject::JSONObject& jsonObject);

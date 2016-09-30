@@ -54,6 +54,9 @@ public class com.razerzone.store.sdk.engine.unreal.Plugin {
   public static com.razerzone.store.sdk.engine.unreal.CallbacksInitPlugin getCallbacksInitPlugin();
     Signature: ()Lcom/razerzone/store/sdk/engine/unreal/CallbacksInitPlugin;
 
+  public static com.razerzone.store.sdk.engine.unreal.CallbacksRequestLogin getCallbacksRequestLogin();
+    Signature: ()Lcom/razerzone/store/sdk/engine/unreal/CallbacksRequestLogin;
+
   public static com.razerzone.store.sdk.engine.unreal.CallbacksRequestGamerInfo getCallbacksRequestGamerInfo();
     Signature: ()Lcom/razerzone/store/sdk/engine/unreal/CallbacksRequestGamerInfo;
 
@@ -98,6 +101,9 @@ public class com.razerzone.store.sdk.engine.unreal.Plugin {
 
   public static boolean processOnActivityResult(int, int, android.content.Intent);
     Signature: (IILandroid/content/Intent;)Z
+
+  public static void requestLogin();
+    Signature: ()V
 
   public static void requestGamerInfo();
     Signature: ()V
