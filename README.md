@@ -124,7 +124,7 @@ The [RazerSDK](https://github.com/razerofficial/razer-sdk-docs) can be accessed 
 
 ![image_12](image-md/image_12.png)
 
-* Note: For API `21` the `JAVA_HOME` environment variable should be set to use `JDK8` with the path set to something similar to `JAVA_HOME` set to `C:\Program Files\Java\jdk1.8.0_73`. Setting `JAVA_HOME` requires a reboot. The `Location of JAVA` in the `Android SDK` dialog should also be set to the `JDK8` path.
+* Note: For API `21` the `JAVA_HOME` environment variable should be set to use `JDK8` with the path set to something similar to `C:\Program Files\Java\jdk1.8.0_73`. Setting `JAVA_HOME` requires a reboot. The `Location of JAVA` in the `Android SDK` dialog should also be set to the `JDK8` path.
 
 ## Examples
 
