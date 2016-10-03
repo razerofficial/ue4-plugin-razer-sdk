@@ -216,7 +216,7 @@ The `RazerSDK/InitPlugin` function takes a `FString` parameter for `SecretApiKey
 
 ### RequestLogin
 
-`RequestLogin` opens a login dialog to sign in the user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestGamerInfo` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate indicates the user has signed in or the user was already signed in. The `OnFailure` delegate indicates there was a problem signing in. The `OnCancel` delegate indicates that the user canceled signing in.
+`RequestLogin` opens a login dialog to sign in the user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestLogin` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate indicates the user has signed in or the user was already signed in. The `OnFailure` delegate indicates there was a problem signing in. The `OnCancel` delegate indicates that the user canceled signing in.
 
 ![image_13](image-md/image_13.png)
 
