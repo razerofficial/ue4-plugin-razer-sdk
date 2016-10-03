@@ -176,7 +176,7 @@ The [InAppPurchases](https://github.com/razerofficial/ue4-plugin-razer-sdk/tree/
 
 ![image_10](image-md/image_10.png)
 
-The `Request Products`, `Request Receipts`, and `Request GamerInfo` buttons can use the same binding mechanism as the `Shutdown` button.
+The `Request Products`, `Request Receipts`, `Request Login`, and `Request GamerInfo` buttons can use the same binding mechanism as the `Shutdown` button.
 
 The `Purchase` buttons need special handling to check for the pressed state using the `Event Tick` event. This is a workaround because the `OnPressed` delegate doesn't provide the `Button` sender as a parameter. The `OnPressed` binding indicates that a `Button` was pressed, but doesn't indicate which `Button` was pressed. 
 
@@ -186,9 +186,9 @@ The `OnSuccessRequestProducts` delegate sets the `Var_Products` variable so that
 
 The `OnSuccessRequestReceipts` delegate sets the `Var_Receipts` variable so that the `MainThread` can update the UI.
 
-The `OnSuccessGamerInfo` delegate is able to set the `GamerInfo TextBlock` outside the `MainThread` without throwing an assetion.
+The `OnSuccessGamerInfo` delegate is able to set the `GamerInfo TextBlock` outside the `MainThread` without throwing an assertion.
 
-The `OnSuccessShutdown` delegate is able to set the `Status TextBlock` outside the `MainThread` without throwing an assetion.
+The `OnSuccessShutdown` delegate is able to set the `Status TextBlock` outside the `MainThread` without throwing an assertion.
 
 The `UpdateProductsUIOnRenderingThread` custom event dynamically creates `Buttons` that can be `pressed` to call the `RazerSDK/RequestPurchase` function.
 
@@ -214,9 +214,15 @@ The `RazerSDK/InitPlugin` function takes a `FString` parameter for `SecretApiKey
 
 ![image_3](image-md/image_3.png)
 
+### RequestLogin
+
+`RequestLogin` opens a login dialog to sign in the user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestGamerInfo` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate indicates the user has signed in or the user was already signed in. The `OnFailure` delegate indicates there was a problem signing in. The `OnCancel` delegate indicates that the user canceled signing in.
+
+![image_13](image-md/image_13.png)
+
 ### RequestGamerInfo
 
-`RequestGamerInfo` returns the `GamerInfo` for the logged in user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestGamerInfo` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives a `FRazerSDK_GamerInfo` structure. The `FRazerSDK_GamerInfo` structure provides the `Username` and `Uuid` fields.
+`RequestGamerInfo` returns the `GamerInfo` for the logged in user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestGamerInfo` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives a `FRazerSDK_GamerInfo` structure. The `FRazerSDK_GamerInfo` structure provides the `Username` and `Uuid` fields. The `OnFailure` delegate will be invoked if the user is not logged in. 
 
 ![image_4](image-md/image_4.png)
 
@@ -228,13 +234,13 @@ The `RazerSDK/InitPlugin` function takes a `FString` parameter for `SecretApiKey
 
 ### RequestPurchase
 
-`RequestPurchase` initiates a purchase for the logged in user given the `identifier` and `product type`. The `product type` can be `ENTITLEMENT` or `CONSUMABLE`. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestPurchase` function takes a `FString` for the `identifier` and `product type` parameters. Entitlements and consumables need to correspond to the items that were created in the [developer portal](https://devs.ouya.tv). The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives a `FRazerSDK_PurchaseResult` structures. The `FRazerSDK_PurchaseResult` structure provides the `Identifier` that was just purchased by the logged in user.
+`RequestPurchase` initiates a purchase for the logged in user given the `identifier` and `product type`. The `product type` can be `ENTITLEMENT` or `CONSUMABLE`. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestPurchase` function takes a `FString` for the `identifier` and `product type` parameters. Entitlements and consumables need to correspond to the items that were created in the [developer portal](https://devs.ouya.tv). The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives a `FRazerSDK_PurchaseResult` structures. The `FRazerSDK_PurchaseResult` structure provides the `Identifier` that was just purchased by the logged in user. The `OnFailure` delegate will be invoked if the user is not logged in.
 
 ![image_6](image-md/image_6.png)
 
 ### RequestReceipts
 
-`RequestReceipts` returns all the `ENTITLEMENT` receipts for the logged in user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestReceipts` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives an array of `FRazerSDK_Receipt` structures. The `FRazerSDK_Receipt` structure provides the `Identifier`, `LocalPrice`, and several other fields.
+`RequestReceipts` returns all the `ENTITLEMENT` receipts for the logged in user. This method should only be invoked after the `RazerSDK` has successfully initialized. The `RazerSDK/RequestReceipts` function takes only the delegate result parameters. The `OnSuccess` delegate is invoked if the operation completes successfully. The `OnFailure` delegate is invoked if the operation failed. The `OnCancel` delegate is invoked if the operation was canceled. The `OnSuccess` delegate receives an array of `FRazerSDK_Receipt` structures. The `FRazerSDK_Receipt` structure provides the `Identifier`, `LocalPrice`, and several other fields. The `OnFailure` delegate will be invoked if the user is not logged in.
 
 ![image_7](image-md/image_7.png)
 
